@@ -109,6 +109,11 @@
           "default": [],
           "description": "Additional glob patterns to exclude from scans."
         },
+        "lens.excludeTests": {
+          "type": "boolean",
+          "default": false,
+          "description": "Exclude test files (*.spec.*, *.test.*, *_test.*) from analysis. Lens auto-detects test patterns from sonar-project.properties."
+        },
         "lens.severity": {
           "type": "object",
           "default": {

@@ -173,12 +173,25 @@ export class Scanner {
             args.push('-c', configPath);
         }
 
+        // Log config sources
+        this.outputChannel.appendLine(`[scan] ${rootPath}`);
+        this.outputChannel.appendLine(`[config] binary: ${lensBin}`);
+        if (configPath) {
+            this.outputChannel.appendLine(`[config] explicit: ${configPath}`);
+        }
+        // sonar-project.properties is auto-detected by lens CLI
+
         const { stdout, stderr } = await this.execFile(lensBin, args, {
             cwd: rootPath,
         });
 
         if (stderr) {
-            this.outputChannel.appendLine(`[stderr] ${stderr}`);
+            // Log sonar-project.properties detection
+            for (const line of stderr.split('\n')) {
+                if (line.includes('sonar-project') || line.includes('sonar.')) {
+                    this.outputChannel.appendLine(`[config] ${line.trim()}`);
+                }
+            }
         }
 
         try {

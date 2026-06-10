@@ -1,0 +1,292 @@
+{
+  "scan_time": 1781059208,
+  "files": {
+    ".lens/state.json": {
+      "hash": "b8cedd43f7c20fe5",
+      "issues": []
+    },
+    "README.md": {
+      "hash": "1904fa0c4aba1b5a",
+      "issues": []
+    },
+    "package-lock.json": {
+      "hash": "fbe960b90196b061",
+      "issues": []
+    },
+    "package.json": {
+      "hash": "bb4e749dd6e81cce",
+      "issues": []
+    },
+    "src/diagnostics.ts": {
+      "hash": "0cdf7ea17c83c690",
+      "issues": [
+        {
+          "key": "prefer-nullish-coalescing:119:8880e0687c1d6ad7",
+          "rule_id": "prefer-nullish-coalescing",
+          "line": 119,
+          "message": "Use `??` instead of `||` to allow valid falsy values like `0` or `''`."
+        },
+        {
+          "key": "no-magic-numbers:29:f333fe3da61b16a7",
+          "rule_id": "no-magic-numbers",
+          "line": 29,
+          "message": "Extract magic number `200` into a named constant."
+        },
+        {
+          "key": "no-magic-numbers:109:4b7e02b1ad1d1878",
+          "rule_id": "no-magic-numbers",
+          "line": 109,
+          "message": "Extract magic number `999` into a named constant."
+        }
+      ]
+    },
+    "src/extension.ts": {
+      "hash": "b1d3f9519c44cbab",
+      "issues": [
+        {
+          "key": "no-console:77:5662cf13d274d5ee",
+          "rule_id": "no-console",
+          "line": 77,
+          "message": "Avoid `console.*` calls; use a proper logger."
+        },
+        {
+          "key": "max-function-lines:17:9f12d94097e934c9",
+          "rule_id": "max-function-lines",
+          "line": 17,
+          "message": "Function `activate` is 62 lines long; consider splitting (max 50)."
+        }
+      ]
+    },
+    "src/scanner.ts": {
+      "hash": "bf2a61ae365e6fbf",
+      "issues": [
+        {
+          "key": "no-explicit-any:98:7acc19ff408dc771",
+          "rule_id": "no-explicit-any",
+          "line": 98,
+          "message": "Avoid the `any` type; use a specific type or `unknown`."
+        },
+        {
+          "key": "no-explicit-any:127:efac3d227d34b5f2",
+          "rule_id": "no-explicit-any",
+          "line": 127,
+          "message": "Avoid the `any` type; use a specific type or `unknown`."
+        },
+        {
+          "key": "no-explicit-any:162:32724025ee91cbef",
+          "rule_id": "no-explicit-any",
+          "line": 162,
+          "message": "Avoid the `any` type; use a specific type or `unknown`."
+        },
+        {
+          "key": "no-explicit-any:210:cc9f1c7c4758228b",
+          "rule_id": "no-explicit-any",
+          "line": 210,
+          "message": "Avoid the `any` type; use a specific type or `unknown`."
+        },
+        {
+          "key": "no-implicit-any:228:bb4bc66a89bf43d3",
+          "rule_id": "no-implicit-any",
+          "line": 228,
+          "message": "Parameter `resolve` is missing a type annotation."
+        },
+        {
+          "key": "no-implicit-any:228:1b2b536252527031",
+          "rule_id": "no-implicit-any",
+          "line": 228,
+          "message": "Parameter `reject` is missing a type annotation."
+        },
+        {
+          "key": "no-implicit-any:229:cd26acafbf9f1278",
+          "rule_id": "no-implicit-any",
+          "line": 229,
+          "message": "Parameter `err` is missing a type annotation."
+        },
+        {
+          "key": "no-implicit-any:229:904697153133c2c6",
+          "rule_id": "no-implicit-any",
+          "line": 229,
+          "message": "Parameter `stdout` is missing a type annotation."
+        },
+        {
+          "key": "no-implicit-any:229:2d7ef2d436278c76",
+          "rule_id": "no-implicit-any",
+          "line": 229,
+          "message": "Parameter `stderr` is missing a type annotation."
+        },
+        {
+          "key": "no-implicit-any:244:9037be1936c331b5",
+          "rule_id": "no-implicit-any",
+          "line": 244,
+          "message": "Parameter `resolve` is missing a type annotation."
+        },
+        {
+          "key": "no-implicit-any:244:4579e4bd1f99894e",
+          "rule_id": "no-implicit-any",
+          "line": 244,
+          "message": "Parameter `reject` is missing a type annotation."
+        },
+        {
+          "key": "no-implicit-any:245:d79cc40d75d9d546",
+          "rule_id": "no-implicit-any",
+          "line": 245,
+          "message": "Parameter `err` is missing a type annotation."
+        },
+        {
+          "key": "no-implicit-any:245:c3dcd948ffe74e76",
+          "rule_id": "no-implicit-any",
+          "line": 245,
+          "message": "Parameter `stdout` is missing a type annotation."
+        },
+        {
+          "key": "no-implicit-any:245:e5a74cb8660fbc00",
+          "rule_id": "no-implicit-any",
+          "line": 245,
+          "message": "Parameter `stderr` is missing a type annotation."
+        },
+        {
+          "key": "prefer-nullish-coalescing:233:4b89e8c1260826bd",
+          "rule_id": "prefer-nullish-coalescing",
+          "line": 233,
+          "message": "Use `??` instead of `||` to allow valid falsy values like `0` or `''`."
+        },
+        {
+          "key": "prefer-nullish-coalescing:249:39bc169e004ebc2c",
+          "rule_id": "prefer-nullish-coalescing",
+          "line": 249,
+          "message": "Use `??` instead of `||` to allow valid falsy values like `0` or `''`."
+        },
+        {
+          "key": "no-useless-return:74:4b70a0f87e031341",
+          "rule_id": "no-useless-return",
+          "line": 74,
+          "message": "Useless `return;` at the end of a function."
+        },
+        {
+          "key": "no-useless-return:78:a86fad6e79af13e3",
+          "rule_id": "no-useless-return",
+          "line": 78,
+          "message": "Useless `return;` at the end of a function."
+        },
+        {
+          "key": "no-useless-return:108:e048ed66f56dca02",
+          "rule_id": "no-useless-return",
+          "line": 108,
+          "message": "Useless `return;` at the end of a function."
+        },
+        {
+          "key": "no-useless-return:113:f2421fb1bb7b85fb",
+          "rule_id": "no-useless-return",
+          "line": 113,
+          "message": "Useless `return;` at the end of a function."
+        },
+        {
+          "key": "no-useless-return:135:cee3f994083ee618",
+          "rule_id": "no-useless-return",
+          "line": 135,
+          "message": "Useless `return;` at the end of a function."
+        },
+        {
+          "key": "no-lonely-if:158:d76d49469462bcdb",
+          "rule_id": "no-lonely-if",
+          "line": 158,
+          "message": "Use `else if` instead of nested `if` inside `else`."
+        },
+        {
+          "key": "no-unused-vars:142:3d6f04a061ec528e",
+          "rule_id": "no-unused-vars",
+          "line": 142,
+          "message": "`{ stdout }` is declared but never used."
+        },
+        {
+          "key": "no-unused-vars:176:88e41a2c62cd893a",
+          "rule_id": "no-unused-vars",
+          "line": 176,
+          "message": "`{ stdout, stderr }` is declared but never used."
+        },
+        {
+          "key": "no-unused-vars:203:8952c39475e1ccb3",
+          "rule_id": "no-unused-vars",
+          "line": 203,
+          "message": "`{ stdout }` is declared but never used."
+        },
+        {
+          "key": "no-magic-numbers:187:4e6b13c9bf66287c",
+          "rule_id": "no-magic-numbers",
+          "line": 187,
+          "message": "Extract magic number `200` into a named constant."
+        },
+        {
+          "key": "no-magic-numbers:229:9dd4b61af5d667ed",
+          "rule_id": "no-magic-numbers",
+          "line": 229,
+          "message": "Extract magic number `50` into a named constant."
+        },
+        {
+          "key": "no-magic-numbers:229:ee0013f3a0e7657e",
+          "rule_id": "no-magic-numbers",
+          "line": 229,
+          "message": "Extract magic number `1024` into a named constant."
+        },
+        {
+          "key": "no-magic-numbers:229:ee0013f3a0e7657e",
+          "rule_id": "no-magic-numbers",
+          "line": 229,
+          "message": "Extract magic number `1024` into a named constant."
+        },
+        {
+          "key": "no-magic-numbers:245:2029ebe27b6f5978",
+          "rule_id": "no-magic-numbers",
+          "line": 245,
+          "message": "Extract magic number `50` into a named constant."
+        },
+        {
+          "key": "no-magic-numbers:245:3a93e5ed1d98389f",
+          "rule_id": "no-magic-numbers",
+          "line": 245,
+          "message": "Extract magic number `1024` into a named constant."
+        },
+        {
+          "key": "no-magic-numbers:245:3a93e5ed1d98389f",
+          "rule_id": "no-magic-numbers",
+          "line": 245,
+          "message": "Extract magic number `1024` into a named constant."
+        }
+      ]
+    },
+    "src/statusBar.ts": {
+      "hash": "c6557eb36ae7f2c6",
+      "issues": [
+        {
+          "key": "prefer-nullish-coalescing:34:83f90661c65e0ca6",
+          "rule_id": "prefer-nullish-coalescing",
+          "line": 34,
+          "message": "Use `??` instead of `||` to allow valid falsy values like `0` or `''`."
+        },
+        {
+          "key": "no-lonely-if:29:06cb6251d4f27bcb",
+          "rule_id": "no-lonely-if",
+          "line": 29,
+          "message": "Use `else if` instead of nested `if` inside `else`."
+        },
+        {
+          "key": "no-lonely-if:38:37e44a1af85f10fc",
+          "rule_id": "no-lonely-if",
+          "line": 38,
+          "message": "Use `else if` instead of nested `if` inside `else`."
+        },
+        {
+          "key": "no-magic-numbers:14:c4539d88802be921",
+          "rule_id": "no-magic-numbers",
+          "line": 14,
+          "message": "Extract magic number `50` into a named constant."
+        }
+      ]
+    },
+    "tsconfig.json": {
+      "hash": "26b1794ee49d37d9",
+      "issues": []
+    }
+  },
+  "version": null
+}
