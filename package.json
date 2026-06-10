@@ -1,0 +1,172 @@
+{
+  "name": "lens",
+  "displayName": "Lens — Code Quality Scanner",
+  "description": "Lightweight code quality & security scanner. Issues, duplication, coverage — right in your editor.",
+  "version": "0.10.0",
+  "publisher": "fatmuh",
+  "license": "MIT",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#1a1a2e",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fatmuh/lens-vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/fatmuh/lens-vscode/issues"
+  },
+  "homepage": "https://docs.lenscan.dev",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Linters",
+    "Programming Languages",
+    "Testing",
+    "Security"
+  ],
+  "keywords": [
+    "linter",
+    "code quality",
+    "static analysis",
+    "sonarqube",
+    "duplication",
+    "coverage",
+    "security",
+    "typescript",
+    "python",
+    "go",
+    "rust",
+    "dart"
+  ],
+  "activationEvents": [
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:python",
+    "onLanguage:go",
+    "onLanguage:rust",
+    "onLanguage:dart"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "lens.scanWorkspace",
+        "title": "Lens: Scan Workspace"
+      },
+      {
+        "command": "lens.scanFile",
+        "title": "Lens: Scan Current File"
+      },
+      {
+        "command": "lens.clear",
+        "title": "Lens: Clear Results"
+      },
+      {
+        "command": "lens.showOutput",
+        "title": "Lens: Show Output"
+      },
+      {
+        "command": "lens.fixFile",
+        "title": "Lens: AI Fix Current File"
+      }
+    ],
+    "configuration": {
+      "title": "Lens",
+      "properties": {
+        "lens.path": {
+          "type": "string",
+          "default": "lens",
+          "description": "Path to the lens binary. Use 'lens' if it's on your PATH."
+        },
+        "lens.scanOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically scan the current file on save."
+        },
+        "lens.scanOnOpen": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically scan files when opened."
+        },
+        "lens.maxProblems": {
+          "type": "number",
+          "default": 200,
+          "description": "Maximum number of problems to show per file."
+        },
+        "lens.configPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to quality-gate.toml. Empty = auto-detect."
+        },
+        "lens.excludePatterns": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "description": "Additional glob patterns to exclude from scans."
+        },
+        "lens.severity": {
+          "type": "object",
+          "default": {
+            "blocker": "error",
+            "critical": "error",
+            "major": "warning",
+            "minor": "information",
+            "info": "hint"
+          },
+          "description": "Map Lens severity levels to VS Code diagnostic severity.",
+          "properties": {
+            "blocker": { "type": "string", "enum": ["error", "warning", "information", "hint"] },
+            "critical": { "type": "string", "enum": ["error", "warning", "information", "hint"] },
+            "major": { "type": "string", "enum": ["error", "warning", "information", "hint"] },
+            "minor": { "type": "string", "enum": ["error", "warning", "information", "hint"] },
+            "info": { "type": "string", "enum": ["error", "warning", "information", "hint"] }
+          }
+        }
+      }
+    },
+    "colors": [
+      {
+        "id": "lens.statusBarError",
+        "description": "Status bar color when errors are found",
+        "defaults": {
+          "dark": "#f44747",
+          "light": "#f44747"
+        }
+      },
+      {
+        "id": "lens.statusBarWarning",
+        "description": "Status bar color when warnings are found",
+        "defaults": {
+          "dark": "#cca700",
+          "light": "#cca700"
+        }
+      },
+      {
+        "id": "lens.statusBarOk",
+        "description": "Status bar color when no issues",
+        "defaults": {
+          "dark": "#89d185",
+          "light": "#89d185"
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --minify",
+    "watch": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --sourcemap --watch",
+    "lint": "tsc --noEmit",
+    "package": "npx @vscode/vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.7.0"
+  }
+}
