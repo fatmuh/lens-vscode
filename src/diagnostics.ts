@@ -60,10 +60,17 @@ export class DiagnosticsManager {
             byFile.set(filePath, existing);
         }
 
+        // Debug: log first few files
+        let count = 0;
         for (const [filePath, fileIssues] of byFile) {
             const uri = vscode.Uri.file(filePath);
             this.setFileIssues(uri, fileIssues);
+            if (count < 3) {
+                console.log(`[lens] ${filePath}: ${fileIssues.length} issues`);
+                count++;
+            }
         }
+        console.log(`[lens] setWorkspaceIssues: ${issues.length} issues across ${byFile.size} files`);
     }
 
     clearAll() {

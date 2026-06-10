@@ -23,6 +23,11 @@ export interface LensResult {
     issues: LensIssue[];
     summary?: {
         total_files: number;
+        issue_count: number;
+        issues_by_severity: Record<string, number>;
+    };
+    scan?: {
+        root: string;
         duration_ms: number;
     };
     metrics?: {
@@ -91,8 +96,12 @@ export class Scanner {
                 this.diagnostics.setWorkspaceIssues(issues, root);
                 const breakdown = this.diagnostics.issueBreakdown();
                 this.statusBar.setIssueCount(issues.length, breakdown);
+                const fileCount = new Set(issues.map(i => i.file)).size;
                 this.outputChannel.appendLine(
-                    `[workspace] ${issues.length} issues in ${result.summary?.total_files || '?'} files (${result.summary?.duration_ms || '?'}ms)`
+                    `[workspace] ${issues.length} issues in ${fileCount} files (${result.scan?.duration_ms || '?'}ms)`
+                );
+                this.outputChannel.appendLine(
+                    `[breakdown] ${breakdown}`
                 );
             }
         } catch (err: any) {
