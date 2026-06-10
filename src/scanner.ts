@@ -70,7 +70,7 @@ export class Scanner {
         }
     }
 
-    async scanWorkspace() {
+    async scanWorkspace(): Promise<void> {
         if (this.scanning) { return; }
         const folders = vscode.workspace.workspaceFolders;
         if (!folders || folders.length === 0) {
@@ -125,7 +125,6 @@ export class Scanner {
                 );
             }
         } catch (err: any) {
-            // Silent — don't spam on every save
             this.outputChannel.appendLine(`[error] ${err.message}`);
         }
     }
@@ -173,23 +172,17 @@ export class Scanner {
             args.push('-c', configPath);
         }
 
-        // Log config sources
-        this.outputChannel.appendLine(`[scan] ${rootPath}`);
-        this.outputChannel.appendLine(`[config] binary: ${lensBin}`);
-        if (configPath) {
-            this.outputChannel.appendLine(`[config] explicit: ${configPath}`);
-        }
-        // sonar-project.properties is auto-detected by lens CLI
+        this.outputChannel.appendLine(`[scan] ${rootPath} (${lensBin})`);
 
         const { stdout, stderr } = await this.execFile(lensBin, args, {
             cwd: rootPath,
         });
 
         if (stderr) {
-            // Log sonar-project.properties detection
             for (const line of stderr.split('\n')) {
-                if (line.includes('sonar-project') || line.includes('sonar.')) {
-                    this.outputChannel.appendLine(`[config] ${line.trim()}`);
+                const trimmed = line.trim();
+                if (trimmed && !trimmed.includes('INFO')) {
+                    this.outputChannel.appendLine(`[config] ${trimmed}`);
                 }
             }
         }
@@ -221,7 +214,6 @@ export class Scanner {
                 return null;
             }
         } catch (err: any) {
-            // lens returns non-zero on quality gate failure — still has JSON
             if (err.stdout) {
                 try {
                     return JSON.parse(err.stdout);

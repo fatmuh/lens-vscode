@@ -6,13 +6,14 @@ import * as vscode from 'vscode';
 
 export class StatusBar {
     private item: vscode.StatusBarItem;
-    private onClickCb?: () => void;
 
     constructor() {
         this.item = vscode.window.createStatusBarItem(
             vscode.StatusBarAlignment.Left,
             50
         );
+        this.item.text = '$(search) Lens';
+        this.item.tooltip = 'Lens: Ready';
         this.item.command = 'lens.showOutput';
         this.item.show();
     }
@@ -23,14 +24,13 @@ export class StatusBar {
 
     setIssueCount(count: number, breakdown: string) {
         if (count === 0) {
-            this.item.text = '$(check) Lens: clean';
+            this.item.text = '$(check) Lens';
             this.item.tooltip = 'Lens: No issues found';
             this.item.backgroundColor = undefined;
         } else {
             this.item.text = `$(warning) Lens: ${count}`;
-            this.item.tooltip = `Lens: ${breakdown}`;
+            this.item.tooltip = `Lens: ${breakdown}\nClick for details`;
 
-            // Color based on worst severity
             if (breakdown.includes('blocker') || breakdown.includes('critical')) {
                 this.item.backgroundColor = new vscode.ThemeColor(
                     'statusBarItem.errorBackground'
@@ -45,18 +45,21 @@ export class StatusBar {
         }
     }
 
+    setFileCount(count: number) {
+        // Show per-file count briefly
+        if (count === 0) {
+            this.item.text = '$(check) Lens';
+        }
+    }
+
     clear() {
         this.item.text = '$(search) Lens';
         this.item.tooltip = 'Lens: Ready';
         this.item.backgroundColor = undefined;
     }
 
-    onClick(cb: () => void) {
-        this.onClickCb = cb;
-        this.item.command = undefined;
-
-        // Use a different approach — register a separate command
-        // Actually, let's just keep the showOutput command
+    onClick(_cb: () => void) {
+        // Already bound to command in constructor
     }
 
     dispose() {

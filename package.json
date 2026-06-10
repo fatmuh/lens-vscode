@@ -73,6 +73,33 @@
       {
         "command": "lens.fixFile",
         "title": "Lens: AI Fix Current File"
+      },
+      {
+        "command": "lens.openIssue",
+        "title": "Lens: Go to Issue"
+      },
+      {
+        "command": "lens.disableRule",
+        "title": "Lens: Disable Rule"
+      },
+      {
+        "command": "lens.openRuleDocs",
+        "title": "Lens: Open Rule Docs"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "lens.issues",
+          "name": "Lens Issues",
+          "icon": "$(shield)"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "lens.issues",
+        "contents": "No issues found.\n[Scan Workspace](command:lens.scanWorkspace)"
       }
     ],
     "configuration": {
@@ -92,6 +119,16 @@
           "type": "boolean",
           "default": false,
           "description": "Automatically scan files when opened."
+        },
+        "lens.scanOnStartup": {
+          "type": "boolean",
+          "default": true,
+          "description": "Scan workspace on extension activation."
+        },
+        "lens.analyzeOnType": {
+          "type": "boolean",
+          "default": true,
+          "description": "Analyze code as you type (debounced 1.5s). Like SonarLint."
         },
         "lens.maxProblems": {
           "type": "number",
